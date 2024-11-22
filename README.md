@@ -1,11 +1,7 @@
-# BLIP Image Captioning API
+# Image Captioning API
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Python](https://img.shields.io/badge/python-3.7%20%7C%203.8%20%7C%203.9-blue.svg)](https://www.python.org/)
-[![FastAPI](https://img.shields.io/badge/fastapi-0.68.0-blue.svg)](https://fastapi.tiangolo.com/)
-[![Hugging Face Transformers](https://img.shields.io/badge/transformers-4.19.0-blue.svg)](https://huggingface.co/docs/transformers/index)
 
-BLIP Image Captioning API is a powerful and easy-to-use API that generates descriptive captions for images using the BLIP (Bootstrapping Language-Image Pre-training) model from Hugging Face Transformers. With just a few lines of code, you can integrate image captioning functionality into your applications.
+Image Captioning API is a powerful and easy-to-use API that generates descriptive captions for images using the BLIP (Bootstrapping Language-Image Pre-training) model from Hugging Face Transformers. With just a few lines of code, you can integrate image captioning functionality into your applications.
 
 ## Table of Contents
 
@@ -19,7 +15,6 @@ BLIP Image Captioning API is a powerful and easy-to-use API that generates descr
 - [Logging](#logging)
 - [Architecture](#architecture)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ## Features
@@ -171,9 +166,6 @@ The architecture of the BLIP Image Captioning API can be represented using the f
 
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
 
 ## Acknowledgements
 
