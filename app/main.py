@@ -1,4 +1,4 @@
-import logging.config
+# import logging.config
 
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -24,24 +24,14 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 
-# Configure logging
-log_dir = "D:\\app\\.cache"
-log_file = os.path.join(log_dir, "app.log")
-os.makedirs(log_dir, exist_ok=True)  # Ensure the log directory exists
 
-logging.config.fileConfig(
-    'logging.conf',
-    defaults={'logfilename': log_file},
-    disable_existing_loggers=False
-)
-logger = logging.getLogger(__name__)
 
 # Load the BLIP model once when the app starts
 try:
     model, processor = load_model(settings.blip_model_name)
-    logger.info("BLIP model loaded successfully")
+    # logger.info("BLIP model loaded successfully")
 except Exception as e:
-    logger.exception("Failed to load BLIP model")
+    # logger.exception("Failed to load BLIP model")
     raise RuntimeError("Could not load the model") from e
 
 
@@ -55,7 +45,7 @@ async def serve_index():
 @app.get("/")
 async def read_root():
     """Redirect to home page."""
-    logger.info("Root endpoint accessed, redirecting to home")
+    # logger.info("Root endpoint accessed, redirecting to home")
     return RedirectResponse(url="/home")
 
 @app.post("/caption")
@@ -67,11 +57,11 @@ async def caption(image: UploadFile = File(...), text: str = Form(None)):
     :return: Generated caption.
     """
     try:
-        logger.info(f"Received caption request with file: {image.filename}")
+        # logger.info(f"Received caption request with file: {image.filename}")
 
         # Validate image content type
         if image.content_type not in ["image/jpeg", "image/png"]:
-            logger.warning(f"Invalid image format: {image.content_type}")
+            # logger.warning(f"Invalid image format: {image.content_type}")
             raise HTTPException(status_code=400, detail="Invalid image format. Only JPEG and PNG are supported.")
 
         # Load and process the image
@@ -80,16 +70,16 @@ async def caption(image: UploadFile = File(...), text: str = Form(None)):
 
         # Generate the caption
         caption = generate_caption(model, processor, loaded_image, text)
-        logger.info("Caption generated successfully")
+        # logger.info("Caption generated successfully")
         return {"caption": caption}
 
     except HTTPException as http_err:
-        logger.error(f"Client error: {http_err.detail}")
+        # logger.error(f"Client error: {http_err.detail}")
         raise
     except Exception as e:
-        logger.exception("Unexpected error in /caption endpoint")
+        # logger.exception("Unexpected error in /caption endpoint")
         raise HTTPException(status_code=500, detail="Internal server error") from e
     finally:
         # Ensure the image file is closed
         await image.close()
-        logger.debug(f"Closed file: {image.filename}")
+        # logger.debug(f"Closed file: {image.filename}")
