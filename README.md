@@ -42,25 +42,25 @@ Whether you are a developer interested in exploring image captioning techniques,
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/askaresh/blip-image-captioning-api.git
+   git clone [https://github.com/rahul4507/image-captioning](https://github.com/rahul4507/image-captioning)
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd blip-image-captioning-api
+   cd image-captioning
    ```
 
 3. Build the Docker image:
 
    ```bash
-   docker build -t blip-image-captioning-api .
+   docker build -t image-captioning .
    ```
 
 4. Run the Docker container:
 
    ```bash
-   docker run -p 8000:8000 blip-image-captioning-api
+   docker run -p 8000:8000 image-captioning
    ```
 
    The API will be accessible at `http://localhost:8000`.
